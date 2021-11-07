@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaprCounter", "DaprCounter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppWithDI", "ConsoleAppWithDI\ConsoleAppWithDI.csproj", "{9EAB765E-8E5B-4872-B700-9CEEB6FFD8D8}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{26CDA16E-5044-432C-8DCC-2D2FF80023B0}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src-console", "src-console", "{26CDA16E-5044-432C-8DCC-2D2FF80023B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreExampleObjects", "StoreExampleObjects", "{D588EBFC-8940-4AA8-87C8-1DC8A8197966}"
 	ProjectSection(SolutionItems) = preProject
