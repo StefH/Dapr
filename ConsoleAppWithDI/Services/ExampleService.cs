@@ -1,10 +1,11 @@
+using ConsoleAppWithDI.Models;
 using Dapr.Client;
 
 namespace ConsoleAppWithDI.Services
 {
     internal class ExampleService : IExampleService
     {
-        const string key = "counter";
+        const string key = "ComplexCounter";
         const string StoreNameSecret = "local-secret-store";
         const string StoreName = "statestore-azure-storage-account";
 
@@ -15,7 +16,7 @@ namespace ConsoleAppWithDI.Services
             _daprClient = daprClient;
         }
 
-        public async Task RunAsync()
+        public async Task RunAsync(CancellationToken cancellationToken)
         {
             var accountKey = await _daprClient.GetSecretAsync(StoreNameSecret, "DaprAzureStorageAccountKey");
             Console.WriteLine($"DaprAzureStorageAccountKey = '{accountKey.Values.First()}'");
@@ -25,16 +26,20 @@ namespace ConsoleAppWithDI.Services
                 var forecasts = await _daprClient.InvokeMethodAsync<IEnumerable<string>>(
                      HttpMethod.Get,
                      "daprbackend",
-                     "weatherforecast");
+                     "weatherforecast",
+                     cancellationToken);
             }
             catch { }
 
-            var counter = await _daprClient.GetStateAsync<int>(StoreName, key);
+            var counter = await _daprClient.GetStateAsync<ComplexCounter>(StoreName, key, ConsistencyMode.Strong, null, cancellationToken) ?? new ComplexCounter { Time = DateTime.UtcNow };
             while (true)
             {
-                Console.WriteLine($"Counter = {counter++}");
+                Console.WriteLine($"Curent Counter = {counter.Value} @ {counter.Time}");
 
-                await _daprClient.SaveStateAsync(StoreName, key, counter);
+                counter.Value++;
+                counter.Time = DateTime.UtcNow;
+
+                await _daprClient.SaveStateAsync(StoreName, key, counter, null, null, cancellationToken);
                 await Task.Delay(2000);
             }
         }

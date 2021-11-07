@@ -7,6 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DaprCounter", "DaprCounter\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleAppWithDI", "ConsoleAppWithDI\ConsoleAppWithDI.csproj", "{9EAB765E-8E5B-4872-B700-9CEEB6FFD8D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{26CDA16E-5044-432C-8DCC-2D2FF80023B0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "StoreExampleObjects", "StoreExampleObjects", "{D588EBFC-8940-4AA8-87C8-1DC8A8197966}"
+	ProjectSection(SolutionItems) = preProject
+		StoreExampleObjects\ComplexCounter = StoreExampleObjects\ComplexCounter
+		StoreExampleObjects\counter = StoreExampleObjects\counter
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,6 +32,10 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C08FBEE-1687-43DF-96AE-5C9B528EEB2D} = {26CDA16E-5044-432C-8DCC-2D2FF80023B0}
+		{9EAB765E-8E5B-4872-B700-9CEEB6FFD8D8} = {26CDA16E-5044-432C-8DCC-2D2FF80023B0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6999CF9-AD15-4D51-B8DE-3B2162AE2FB9}

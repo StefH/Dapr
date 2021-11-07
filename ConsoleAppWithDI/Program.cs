@@ -11,8 +11,16 @@ namespace DaprCounter
     /// </summary>
     class Program
     {
+        private static readonly CancellationTokenSource _cts = new();
+
         static async Task Main(string[] args)
         {
+            Console.CancelKeyPress += (s, e) =>
+            {
+                Console.WriteLine("CTRL-C pressed...");
+                _cts.Cancel();
+            };
+
             using IHost host = CreateHostBuilder(args).Build();
 
             await Run(host.Services);
@@ -34,7 +42,7 @@ namespace DaprCounter
             IServiceProvider provider = serviceScope.ServiceProvider;
 
             var exampleService = provider.GetRequiredService<IExampleService>();
-            return exampleService.RunAsync();
+            return exampleService.RunAsync(_cts.Token);
         }
     }
 }
