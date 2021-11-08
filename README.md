@@ -1,2 +1,2 @@
 # Dapr
-Sone Dapr examples
+Some Dapr examples
