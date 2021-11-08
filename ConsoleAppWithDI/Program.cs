@@ -1,13 +1,12 @@
 using ConsoleAppWithDI.Services;
-using Dapr.Client;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace DaprCounter
+namespace ConsoleAppWithDI
 {
     /// <summary>
     /// Run:
-    /// - dapr run --app-id DaprCounter --components-path ./components dotnet run
+    /// - dapr run --app-id ConsoleAppWithDI --components-path ./components dotnet run
     /// </summary>
     class Program
     {

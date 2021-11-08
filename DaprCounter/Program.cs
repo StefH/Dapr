@@ -1,6 +1,6 @@
 using Dapr.Client;
 
-namespace DaprCounter
+namespace ConsoleAppWithDI
 {
     /// <summary>
     /// Run:
