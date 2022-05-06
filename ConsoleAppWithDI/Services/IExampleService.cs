@@ -1,7 +1,6 @@
-namespace ConsoleAppWithDI.Services
+namespace ConsoleAppWithDI.Services;
+
+public interface IExampleService
 {
-    public interface IExampleService
-    {
-        Task RunAsync(CancellationToken cancellationToken);
-    }
+    Task RunAsync(CancellationToken cancellationToken);
 }
