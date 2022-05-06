@@ -1,8 +1,8 @@
 using System.Net.Http.Json;
-using ConsoleAppWithDI.Models;
+using ConsoleAppWithDI2.Models;
 using Dapr.Client;
 
-namespace ConsoleAppWithDI.Services;
+namespace ConsoleAppWithDI2.Services;
 
 internal class ExampleService : IExampleService
 {
@@ -10,9 +10,9 @@ internal class ExampleService : IExampleService
     const string StoreNameSecret = "local-secret-store";
     const string StoreName = "statestore-azure-storage-account";
 
-    private readonly DaprClient _daprClient;
+    private readonly IDaprClient _daprClient;
 
-    public ExampleService(DaprClient daprClient)
+    public ExampleService(IDaprClient daprClient)
     {
         _daprClient = daprClient;
     }
