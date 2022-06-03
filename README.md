@@ -25,7 +25,21 @@ curl http://localhost:3500/v1.0/invoke/MyBackend/method/weatherforecast
 
 Response:
 ``` json
-[{"date":"2022-05-07T23:24:39.848279+02:00","temperatureC":36,"temperatureF":96,"summary":"Warm"},{"date":"2022-05-08T23:24:39.8488653+02:00","temperatureC":-17,"temperatureF":2,"summary":"Balmy"},{"date":"2022-05-09T23:24:39.8488734+02:00","temperatureC":-15,"temperatureF":6,"summary":"Warm"},{"date":"2022-05-10T23:24:39.8488741+02:00","temperatureC":43,"temperatureF":109,"summary":"Scorching"},{"date":"2022-05-11T23:24:39.8488745+02:00","temperatureC":29,"temperatureF":84,"summary":"Mild"}]
+[
+  {
+    "date": "2022-05-07T23:24:39.848279+02:00",
+    "temperatureC": 36,
+    "temperatureF": 96,
+    "summary": "Warm"
+  },
+  {
+    "date": "2022-05-08T23:24:39.8488653+02:00",
+    "temperatureC": -17,
+    "temperatureF": 2,
+    "summary": "Balmy"
+  },
+  ...
+]
 ```
 
 

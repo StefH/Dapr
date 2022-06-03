@@ -8,7 +8,7 @@ namespace DaprCounterViaRedis;
 /// </summary>
 class Program
 {
-    static string StoreName = "statestore"; // This StoreName is the default Redis store
+    private const string StoreName = "statestore"; // This StoreName is the default Redis store
 
     static async Task Main(string[] args)
     {
