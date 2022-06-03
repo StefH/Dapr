@@ -1,6 +1,7 @@
 using System.Net.Http.Json;
 using ConsoleAppWithDI.Models;
 using Dapr.Client;
+using SharedClassLibrary.Models;
 
 namespace ConsoleAppWithDI.Services;
 
@@ -43,12 +44,12 @@ internal class ExampleService : IExampleService
 
                 foreach (var forecast in forecasts!)
                 {
-                    Console.WriteLine($"HttpClient --> Date:{forecast.Date}, TemperatureC:{forecast.TemperatureC}, Summary:{forecast.Summary}");
+                    Console.WriteLine($"1. HttpClient --> Date:{forecast.Date}, TemperatureC:{forecast.TemperatureC}, Summary:{forecast.Summary}");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("HttpClient Exception = {0}", ex.Message);
+                Console.WriteLine("1. HttpClient Exception = {0}", ex.Message);
             }
 
             await Task.Delay(3000, cancellationToken);
@@ -62,12 +63,12 @@ internal class ExampleService : IExampleService
 
                 foreach (var forecast in forecasts!)
                 {
-                    Console.WriteLine($"InvokeHttpClient --> Date:{forecast.Date}, TemperatureC:{forecast.TemperatureC}, Summary:{forecast.Summary}");
+                    Console.WriteLine($"2. InvokeHttpClient --> Date:{forecast.Date}, TemperatureC:{forecast.TemperatureC}, Summary:{forecast.Summary}");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("InvokeHttpClient Exception = {0}", ex.Message);
+                Console.WriteLine("2. InvokeHttpClient Exception = {0}", ex.Message);
             }
 
             await Task.Delay(3000, cancellationToken);
@@ -84,15 +85,30 @@ internal class ExampleService : IExampleService
 
                 foreach (var forecast in forecasts!)
                 {
-                    Console.WriteLine($"DaprClient --> Date:{forecast.Date}, TemperatureC:{forecast.TemperatureC}, Summary:{forecast.Summary}");
+                    Console.WriteLine($"3. DaprClient --> Date:{forecast.Date}, TemperatureC:{forecast.TemperatureC}, Summary:{forecast.Summary}");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("DaprClient Exception = {0}", ex.Message);
+                Console.WriteLine("3. DaprClient Exception = {0}", ex.Message);
             }
 
             await Task.Delay(3000, cancellationToken);
+
+            // 4. Pub-Sub
+            try
+            {
+                var data = new Order
+                {
+                    Id = "1",
+                    Quantity = 5
+                };
+                await _daprClient.PublishEventAsync<Order>("pubsub", "newOrder", data, cancellationToken);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("4. DaprClient PublishEventAsync Exception = {0}", ex.InnerException?.Message ?? ex.Message);
+            }
         }
     }
 }

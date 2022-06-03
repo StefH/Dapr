@@ -8,7 +8,13 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+
+    // Registers the necessary services to integrate Dapr into the MVC pipeline.
+    // It also registers a DaprClient instance into the dependency injection container, which then can be injected anywhere into your service.
+    .AddDapr();
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -24,5 +30,9 @@ if (app.Environment.IsDevelopment())
 app.UseAuthorization();
 
 app.MapControllers();
+
+// Pub-Sub
+app.UseCloudEvents();
+app.MapSubscribeHandler();
 
 app.Run();

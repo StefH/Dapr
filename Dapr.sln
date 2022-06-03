@@ -28,6 +28,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyBackend", "MyBackend\MyBa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleAppWithDI2", "ConsoleAppWithDI2\ConsoleAppWithDI2.csproj", "{2841BA8A-B20F-42CC-AC5C-92BB03E31906}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedClassLibrary", "SharedClassLibrary\SharedClassLibrary.csproj", "{8BFEE8F9-3D3E-4FFE-ABDE-224909915D2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -54,6 +56,10 @@ Global
 		{2841BA8A-B20F-42CC-AC5C-92BB03E31906}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2841BA8A-B20F-42CC-AC5C-92BB03E31906}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2841BA8A-B20F-42CC-AC5C-92BB03E31906}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BFEE8F9-3D3E-4FFE-ABDE-224909915D2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BFEE8F9-3D3E-4FFE-ABDE-224909915D2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BFEE8F9-3D3E-4FFE-ABDE-224909915D2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BFEE8F9-3D3E-4FFE-ABDE-224909915D2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -64,6 +70,7 @@ Global
 		{E6709E1B-5FC6-4B6A-AD0F-ED1A927FFFC7} = {26CDA16E-5044-432C-8DCC-2D2FF80023B0}
 		{D050E841-06F3-44EA-891A-E899AD4851F1} = {99E2B3DB-DAB7-4563-9C9C-A4425F7FCC11}
 		{2841BA8A-B20F-42CC-AC5C-92BB03E31906} = {99E2B3DB-DAB7-4563-9C9C-A4425F7FCC11}
+		{8BFEE8F9-3D3E-4FFE-ABDE-224909915D2F} = {99E2B3DB-DAB7-4563-9C9C-A4425F7FCC11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B6999CF9-AD15-4D51-B8DE-3B2162AE2FB9}
