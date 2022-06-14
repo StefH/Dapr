@@ -23,7 +23,7 @@ class Program
         Console.WriteLine($"DaprAzureStorageAccountKey = '{accountKey.Values.First()}'");
 
         // 2. Get the current state from the counter for that StoreName (see "azureblob.yaml" the auth --> secretStore property)
-        var counter = await daprClient.GetStateAsync<int>(StoreName, key);
+        var counter = await daprClient.GetStateAsync<int?>(StoreName, key) ?? 0;
 
         while (true)
         {
