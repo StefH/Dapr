@@ -22,7 +22,7 @@ internal class ExampleService : IExampleService
     {
         var accountKey = await _daprClient.GetSecretAsync(StoreNameSecret, "DaprAzureStorageAccountKey", cancellationToken: cancellationToken);
         Console.WriteLine($"DaprAzureStorageAccountKey = '{accountKey.Values.First()}'");
-        
+
         var counter = await _daprClient.GetStateAsync<ComplexCounter>(StoreName, Key, ConsistencyMode.Strong, null, cancellationToken) ?? new ComplexCounter { Time = DateTime.UtcNow };
         while (true)
         {
@@ -33,7 +33,7 @@ internal class ExampleService : IExampleService
 
             await _daprClient.SaveStateAsync(StoreName, Key, counter, null, null, cancellationToken);
 
-            await Task.Delay(3000, cancellationToken);
+            await Task.Delay(2000, cancellationToken);
 
             // 1. Calling Dapr sidecar with .NET HttpClient
             try
@@ -52,7 +52,7 @@ internal class ExampleService : IExampleService
                 Console.WriteLine("1. HttpClient Exception = {0}", ex.Message);
             }
 
-            await Task.Delay(3000, cancellationToken);
+            await Task.Delay(2000, cancellationToken);
 
 
             // 2. Via Dapr's rich integration with HttpClient
@@ -71,7 +71,7 @@ internal class ExampleService : IExampleService
                 Console.WriteLine("2. InvokeHttpClient Exception = {0}", ex.Message);
             }
 
-            await Task.Delay(3000, cancellationToken);
+            await Task.Delay(2000, cancellationToken);
 
 
             // 3. Calling Dapr sidecar with DaprClient
@@ -93,17 +93,18 @@ internal class ExampleService : IExampleService
                 Console.WriteLine("3. DaprClient Exception = {0}", ex.Message);
             }
 
-            await Task.Delay(3000, cancellationToken);
+            await Task.Delay(2000, cancellationToken);
 
             // 4. Pub-Sub
             try
             {
+                Console.WriteLine("4. DaprClient PublishEventAsync");
                 var data = new Order
                 {
                     Id = "1",
                     Quantity = 5
                 };
-                await _daprClient.PublishEventAsync<Order>("pubsub", "newOrder", data, cancellationToken);
+                await _daprClient.PublishEventAsync(pubsubName: "pubsub", topicName: "newOrder", data, cancellationToken);
             }
             catch (Exception ex)
             {

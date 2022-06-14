@@ -6,7 +6,7 @@ namespace ConsoleAppWithDI;
 
 /// <summary>
 /// Run:
-/// - dapr run --app-id ConsoleAppWithDI --components-path ./components dotnet run
+/// - dapr run --app-id ConsoleAppWithDI --components-path ./components --app-port 3500 dotnet run
 /// </summary>
 class Program
 {
